@@ -1,5 +1,6 @@
 require 'active_support/concern'
 require 'zg_redis_user_connector'
+require 'config'
 
 module ZgAuthClient
   module User
@@ -62,7 +63,7 @@ module ZgAuthClient
     end
 
     def info_hash
-      permissions_info.any? ? { permissions: permissions_info, url: { link: "#{Settings['app.url']}/", title: I18n.t('app.title') } } : {}
+      permissions_info.any? ? { permissions: permissions_info, url: { link: "#{Settings.app.url}/", title: I18n.t('app.title') } } : {}
     end
 
     def permissions_info
