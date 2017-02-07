@@ -1,4 +1,4 @@
-require 'zg_auth_redis_user_connector'
+require 'zg_redis_user_connector'
 require 'daemons'
 
 module ZgAuthClient

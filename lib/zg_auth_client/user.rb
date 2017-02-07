@@ -1,5 +1,5 @@
 require 'active_support/concern'
-require 'zg_auth_redis_user_connector'
+require 'zg_redis_user_connector'
 
 module ZgAuthClient
   module User
