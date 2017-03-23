@@ -15,11 +15,7 @@ module ZgAuthClient
     end
 
     def fullname
-      [
-        surname,
-        name,
-        patronymic
-      ].delete_if(&:blank?).join(' ').squish
+      [surname,name,patronymic].compact.join(' ')
     end
 
     def short_name
@@ -63,7 +59,7 @@ module ZgAuthClient
     end
 
     def info_hash
-      permissions_info.any? ? { permissions: permissions_info, url: { link: "#{Settings.app.url}/", title: I18n.t('app.title') } } : {}
+      permissions_info.any? ? { permissions: permissions_info, url: { link: "#{Settings['app.url']}/", title: I18n.t('app.title') } } : {}
     end
 
     def permissions_info

@@ -17,26 +17,6 @@ module ZgAuthClient
       !!current_user
     end
 
-    def sign_in_url
-      raise 'Error::Settings: <profile.sign_in_url> is undefined' if Settings.profile.sign_in_url.blank?
-
-      uri = URI.parse(Settings.profile.sign_in_url)
-
-      uri.query = { redirect_url: request.original_url }.to_query
-
-      uri.to_s
-    end
-
-    def sign_out_url
-      raise 'Error::Settings: <profile.sign_out_url> is undefined' if Settings.profile.sign_out_url.blank?
-
-      uri = URI.parse(Settings.profile.sign_out_url)
-
-      uri.query = { redirect_url: request.original_url }.to_query
-
-      uri.to_s
-    end
-
     private
 
     def session_user_id
@@ -62,6 +42,6 @@ end
 ActiveSupport.on_load :action_controller do
   include ZgAuthClient::Helpers
   if respond_to? :helper_method
-    helper_method :current_user, :user_signed_in?, :sign_in_url, :sign_out_url
+    helper_method :current_user, :user_signed_in?
   end
 end
