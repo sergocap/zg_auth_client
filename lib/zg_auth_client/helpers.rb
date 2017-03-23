@@ -1,5 +1,4 @@
 require 'active_support/concern'
-require 'config'
 
 module ZgAuthClient
   module Helpers
