@@ -107,6 +107,14 @@ module ZgAuthClient
         build_user attributes
       end
 
+      def all
+        arr = []
+        RedisUserConnector.users_ids.each do |user_id|
+          arr << self.find_by(id: user_id)
+        end
+        arr
+      end
+
       private
 
       def is_json?(obj)
